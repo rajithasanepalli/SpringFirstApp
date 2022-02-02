@@ -6,17 +6,25 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringFirstApp {
 
 	public static void main(String[] args) {
-		// Loading container with definition given in XMl file
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-	    
-		Quotation que = (Quotation) context.getBean("quotationService");
-	    String quoteForDay = que.getQuote();
-	    System.out.println(quoteForDay);
-	    
-	    Greetings gre = (Greetings) context.getBean("greetingsService");
-	     String wish = gre.getGreet();
-	     System.out.println(wish);
+		//Loading container with definition(configuration) given in XML file
+				ApplicationContext container = 
+						new ClassPathXmlApplicationContext("applicationContext.xml");
+				
+				Quotation qu = (Quotation) container.getBean("quotationService");
+				String quoteForDay = qu.getQuote();
+				System.out.println(quoteForDay);
+				
+				Greetings gr = (Greetings) container.getBean("greetingsService");
+				String wish = gr.getGreet();
+				System.out.println(wish);
+				
+				Employee emp = (Employee) container.getBean("emp");
+				System.out.println(emp);
+				System.out.println(emp.getEmpId());
+				emp.setEmpId(456);
+				System.out.println(emp.getEmpId());
 
-	}
+			}
+			
 
 }
